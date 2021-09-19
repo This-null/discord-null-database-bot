@@ -14,5 +14,8 @@ bot editlemeyi seven birisiyim yazma taraftarı değilim.
 ###### 32 rolü 3k 4k Sunucularda 1 bottan 5 Dakika içerisinde herkese dağıtabilirsiniz.
 ###### Bazı bot yazarları 5 veya 6 bottan dağıtıyor örnek verirsek spanker biraz ezelim :D
 ###### Bu bot sayesinde sunucunuzu çok rahat bir şekilde ayakta tutabilirsiniz.
+https://user-images.githubusercontent.com/60463845/133924716-7f95defe-4ec6-488d-a25c-995b650a3fe4.mp4
 ![Adsız](https://user-images.githubusercontent.com/60463845/126901667-cc9b8b45-55f7-46db-8021-4e5d060fb36a.png)
 ![Adsız](https://user-images.githubusercontent.com/60463845/126901726-b2876cc1-48ee-4b4d-ae46-3782b4fb7a73.png)
+
+
