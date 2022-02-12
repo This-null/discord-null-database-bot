@@ -1,6 +1,6 @@
 # Yeni versiyon 0.0.3
 
-###### Yakında atarım
+###### Web siteye giriş yapınca rol alma falan filan diye götü kalkmış insanlar varmış falan yapamıyanlarla daşak geçiyorlarmış alın kullanın dostlarım öyle orospu evlatlarına böyle database botu :)
 
 <h2 align="center">Discord Hesaplarım <img src="https://raw.githubusercontent.com/iampavangandhi/iampavangandhi/master/gifs/Hi.gif" width="30px"> </h2>
 
