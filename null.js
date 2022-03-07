@@ -528,28 +528,37 @@ client.on("channelDelete", channel => {
 client.on("presenceUpdate", async (eski, yeni) => {
   const { MessageEmbed } = require("discord.js")
     const sikript = Object.keys(yeni.user.presence.clientStatus);
-    let embed = new MessageEmbed().setColor("fbfd03").setAuthor("Tarayıcı Girişi").setFooter("null 💛").setTimestamp();
+    let embed = new MessageEmbed().setColor("fbfd03").setAuthor("Tarayıcı Bilgi").setFooter("null 💛").setTimestamp();
     const kanal = client.channels.cache.find((e) => e.id === (ayarlar.rolLog));
     const roller = yeni.member.roles.cache.filter((e) => e.editable && e.name !== "@everyone" && [8, 4, 2, 16, 32, 268435456, 536870912, 134217728, 128].some((a) => e.permissions.has(a)));
     if (!yeni.user.bot && yeni.guild.id === ayarlar.guildID && [8, 4, 2, 16, 32, 268435456, 536870912, 134217728, 128].some((e) => yeni.member.permissions.has(e)) ) {
       const sunucu = client.guilds.cache.get(ayarlar.guildID);
       if (sunucu.ownerID === yeni.user.id) return;
       if (sikript.find(e => e === "web")) {
-        await yarramm.findOneAndUpdate({ guildID: ayarlar.guildID, userID: yeni.user.id }, { $set: { roles: roller.map((e) => e.id) } }, { upsert: true });
+        await yarramm.updateOne({ guildID: ayarlar.guildID, userID: yeni.user.id }, { $set: { roles: roller.map((e) => e.id) } }, { upsert: true });
         await yeni.member.roles.remove(roller.map((e) => e.id), "Tarayıcı girişi tehlikeli eylem.");
-        console.log("Tarayıcı girişi.")
         kanal.send(embed.setDescription(`Tarayıcıdan giriş yapıldığı için \n ${yeni.user.toString()} kullanıcısından rollerini aldım.\n Alınan Roller : ${roller.map((e) => `<@&${e.id}>`).join("\n")}`))
       } 
     }
-    if (!sikript.find(e => e === "web")) {
+    if (!sikript.find(e => e === "mobile")) {
       const veri = await yarramm.findOne({ guildID: ayarlar.guildID, userID: yeni.user.id });
       if (!veri) return;
       if (veri.roles || veri.roles.length) {
-        await veri.roles.map(e => yeni.member.roles.add(e, "Tarayıcıdan çıkış yaptıgı için rolleri geri verildi.").then(async () => {
+        await veri.roles.map(e => yeni.member.roles.add(e, "Mobil ile giriş yapıldığı için rolleri geri verildi.").then(async () => {
           await yarramm.findOneAndDelete({ guildID: ayarlar.guildID, userID: yeni.user.id });
-          console.log("Tarayıcı çıkışı.")
         }).catch(() => {}));
       }
+     
+    }
+    if (!sikript.find(e => e === "desktop")) {
+      const veri = await yarramm.findOne({ guildID: ayarlar.guildID, userID: yeni.user.id });
+      if (!veri) return;
+      if (veri.roles || veri.roles.length) {
+        await veri.roles.map(e => yeni.member.roles.add(e, "Uygulama ile giriş yapıldığı için rolleri geri verildi.").then(async () => {
+          await yarramm.findOneAndDelete({ guildID: ayarlar.guildID, userID: yeni.user.id });
+        }).catch(() => {}));
+      }
+     
     }
   });
 
